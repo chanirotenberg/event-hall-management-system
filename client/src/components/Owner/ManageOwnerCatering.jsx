@@ -17,7 +17,7 @@ const ManageOwnerCatering = () => {
     const fetchHallsWithCatering = async () => {
       try {
         const res = await ApiService.request({
-          url: "http://localhost:3000/owner/halls-with-catering",
+          url: "/api/owner/halls-with-catering",
           method: "GET",
         });
         setHalls(res);
@@ -58,7 +58,7 @@ const ManageOwnerCatering = () => {
 
     try {
       await ApiService.request({
-        url: `http://localhost:3000/owner/halls/${hall.id}/catering`,
+        url: `/api/owner/halls/${hall.id}/catering`,
         method: "PUT",
         body: { catering: hall.catering },
       });

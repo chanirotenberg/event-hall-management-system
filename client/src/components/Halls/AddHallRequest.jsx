@@ -64,7 +64,7 @@ const AddHallRequest = () => {
       }
 
       const res = await ApiService.request({
-        url: "http://localhost:3000/halls",
+        url: "/api/halls",
         method: "POST",
         body: {
           ...form,

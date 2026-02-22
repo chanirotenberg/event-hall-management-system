@@ -19,7 +19,7 @@ const AddReview = () => {
       const userId = decoded.id;
 
       await ApiService.request({
-        url: "http://localhost:3000/reviews",
+        url: "/api/reviews",
         method: "POST",
         body: {
           user_id: userId,

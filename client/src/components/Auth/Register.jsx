@@ -25,7 +25,7 @@ const Register = () => {
 
     try {
       const res = await ApiService.request({
-        url: "http://localhost:3000/auth/register",
+        url: "/api/auth/register",
         method: "POST",
         body: { name, email, password },
       });

@@ -13,7 +13,7 @@ const AdminUsers = () => {
     const fetchUsers = async () => {
         try {
             const data = await ApiService.request({
-                url: "http://localhost:3000/admin/users",
+                url: "/api/admin/users",
             });
             setUsers(data);
         } catch (err) {

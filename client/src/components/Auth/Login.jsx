@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       const res = await ApiService.request({
-        url: "http://localhost:3000/auth/login",
+        url: "/api/auth/login",
         method: "POST",
         body: { email, password },
       });
@@ -60,7 +60,7 @@ const Login = () => {
 
     try {
       await ApiService.request({
-        url: "http://localhost:3000/auth/forgot-password",
+        url: "/api/auth/forgot-password",
         method: "POST",
         body: { email },
       });

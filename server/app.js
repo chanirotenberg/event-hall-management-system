@@ -1,46 +1,61 @@
-import express from 'express';
-import cors from 'cors';
-import logger from './utils/logger.js';
+import express from "express";
+import cors from "cors";
+import logger from "./utils/logger.js";
 
-import authRouter from './routes/auth.js';
-import hallRouter from './routes/halls.js';
-import bookingRouter from './routes/bookings.js';
-import reviewRouter from './routes/reviews.js';
-import adminRouter from './routes/admin.js';
-import userRouter from './routes/users.js'
-import cateringRouter from './routes/catering.js';
-import paymentRouter from './routes/payment.js';
-import ownerRoutes from './routes/owner.js';
-import startReviewReminderCron from './services/reviewCron.js';
+import authRouter from "./routes/auth.js";
+import hallRouter from "./routes/halls.js";
+import bookingRouter from "./routes/bookings.js";
+import reviewRouter from "./routes/reviews.js";
+import adminRouter from "./routes/admin.js";
+import userRouter from "./routes/users.js";
+import cateringRouter from "./routes/catering.js";
+import paymentRouter from "./routes/payment.js";
+import ownerRoutes from "./routes/owner.js";
+
+import startReviewReminderCron from "./services/reviewCron.js";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env" });
+
+console.log("ENV CHECK:", {
+  MYSQL_HOST: process.env.MYSQL_HOST,
+  MYSQL_USER: process.env.MYSQL_USER,
+  HAS_PASSWORD: Boolean(process.env.MYSQL_PASSWORD),
+});
 startReviewReminderCron();
-
-  // הוספת קייטרינג
 
 const app = express();
 
 app.use(express.json());
 
-app.use(cors({
-  origin: 'http://localhost:5173' // עדכן לכתובת של הקליינט שלך
-}));
+// ✅ בפיתוח עם Vite Proxy אין צורך לנעול origin ל-5173
+// הכי פשוט:
+app.use(cors());
 
-// רוטים ראשיים
-app.use('/payment', paymentRouter);
-app.use('/auth', authRouter);
-app.use('/catering', cateringRouter);
-app.use('/halls', hallRouter);
-app.use('/bookings', bookingRouter);
-app.use('/reviews', reviewRouter);
-app.use('/admin', adminRouter);
-app.use('/users', userRouter);
-app.use('/owner', ownerRoutes); // 👈 חשוב! הוספת ראוטים של owner
+// אם את רוצה "מקצועי" לפי סביבה:
+// app.use(cors(process.env.NODE_ENV === "production"
+//   ? { origin: ["https://your-domain.com"], credentials: true }
+//   : { origin: true, credentials: true }
+// ));
+
+const API_PREFIX = "/api";
+
+// ✅ כל הראוטים תחת /api כדי שה-client יקרא /api/...
+app.use(`${API_PREFIX}/payment`, paymentRouter);
+app.use(`${API_PREFIX}/auth`, authRouter);
+app.use(`${API_PREFIX}/catering`, cateringRouter);
+app.use(`${API_PREFIX}/halls`, hallRouter);
+app.use(`${API_PREFIX}/bookings`, bookingRouter);
+app.use(`${API_PREFIX}/reviews`, reviewRouter);
+app.use(`${API_PREFIX}/admin`, adminRouter);
+app.use(`${API_PREFIX}/users`, userRouter);
+app.use(`${API_PREFIX}/owner`, ownerRoutes);
 
 // לוכד שגיאות גלובלי
 app.use((err, req, res, next) => {
   logger.error("❌ Unhandled error:", err);
 
   const status = err.status || 500;
-  const message = err.message || 'Internal server error';
+  const message = err.message || "Internal server error";
 
   res.status(status).json({ error: message });
 });

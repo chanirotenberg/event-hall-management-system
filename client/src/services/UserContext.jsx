@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const user = await ApiService.request({
-          url: "http://localhost:3000/users/me",
+          url: "/api/users/me",
           method: "GET",
         });
         setCurrentUser(user);
@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
     try {
       localStorage.setItem("token", token);
       const user = await ApiService.request({
-        url: "http://localhost:3000/users/me",
+        url: "/api/users/me",
         method: "GET",
       });
       setCurrentUser(user);

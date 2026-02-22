@@ -12,7 +12,7 @@ const Info = () => {
         const fetchUserInfo = async () => {
             try {
                 const data = await ApiService.request({
-                    url: `http://localhost:3000/users/${currentUser?.id}`,
+                    url: `/api/users/${currentUser?.id}`,
                 });
                 setUserInfo(data);
             } catch (err) {

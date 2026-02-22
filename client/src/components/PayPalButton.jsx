@@ -9,7 +9,7 @@ const PayPalButton = ({ amount, onSuccess }) => {
     try {
       setError("");
       const res = await ApiService.request({
-        url: "http://localhost:3000/payment/create-order",
+        url: "/api/payment/create-order",
         method: "POST",
         body: { amount },
       });

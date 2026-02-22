@@ -11,7 +11,7 @@ const OwnerBookings = () => {
     const fetchBookings = async () => {
       try {
         const res = await ApiService.request({
-          url: "http://localhost:3000/owner/bookings",
+          url: "/api/owner/bookings",
           method: "GET",
         });
         setBookings(res);
@@ -30,7 +30,7 @@ const OwnerBookings = () => {
 
     try {
       await ApiService.request({
-        url: `http://localhost:3000/owner/bookings/${bookingId}/cancel`,
+        url: `/api/owner/bookings/${bookingId}/cancel`,
         method: "POST",
       });
 

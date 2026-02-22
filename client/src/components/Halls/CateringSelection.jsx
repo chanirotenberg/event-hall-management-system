@@ -18,7 +18,7 @@ const CateringSelection = () => {
     const fetchCatering = async () => {
       try {
         const res = await ApiService.request({
-          url: `http://localhost:3000/catering/hall/${hallId}`,
+          url: `/api/catering/hall/${hallId}`,
         });
         setOptions(res);
       } catch (err) {

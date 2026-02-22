@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "main": "index.js",
+  "main": "server/app.js",
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
     "@paypal/react-paypal-js": "^8.8.3",
@@ -25,7 +25,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server/app.js",
+    "db:seed": "node db/seed.js"
   },
   "repository": {
     "type": "git",

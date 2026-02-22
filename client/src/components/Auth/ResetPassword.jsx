@@ -22,7 +22,7 @@ const ResetPassword = () => {
 
     try {
       await ApiService.request({
-        url: "http://localhost:3000/auth/reset-password",
+        url: "/api/auth/reset-password",
         method: "POST",
         body: { email, newPassword: password },
       });

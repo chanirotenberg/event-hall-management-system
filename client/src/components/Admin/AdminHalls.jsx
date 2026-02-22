@@ -15,7 +15,7 @@ const AdminHalls = () => {
   const fetchHalls = async () => {
     try {
       const data = await ApiService.request({
-        url: "http://localhost:3000/admin/halls",
+        url: "/api/admin/halls",
       });
       setHalls(data);
     } catch (err) {
@@ -30,7 +30,7 @@ const AdminHalls = () => {
   const approveHall = async (hallId) => {
     try {
       await ApiService.request({
-        url: `http://localhost:3000/admin/halls/${hallId}/approve`,
+        url: `/api/admin/halls/${hallId}/approve`,
         method: "PATCH",
       });
       fetchHalls(); // רענון

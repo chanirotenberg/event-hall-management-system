@@ -11,7 +11,7 @@ const HallReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const allReviews = await ApiService.request({ url: "http://localhost:3000/reviews" });
+        const allReviews = await ApiService.request({ url: "/api/reviews" });
         const hallSpecific = allReviews.filter(r => r.hall_id === parseInt(hallId));
         setReviews(hallSpecific);
       } catch (err) {

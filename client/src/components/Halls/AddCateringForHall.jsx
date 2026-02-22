@@ -43,7 +43,7 @@ const AddCateringForHall = () => {
     setMessage("");
     try {
       await ApiService.request({
-        url: `http://localhost:3000/owner/halls/${hallId}/catering`,
+        url: `/api/owner/halls/${hallId}/catering`,
         method: "PUT",
         body: { catering },
       });

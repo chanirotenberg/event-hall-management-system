@@ -10,7 +10,7 @@ const ManageOwnerHalls = () => {
     const fetchHalls = async () => {
       try {
         const res = await ApiService.request({
-          url: "http://localhost:3000/owner/halls",
+          url: "/api/owner/halls",
           method: "GET",
         });
         setHalls(res || []);
@@ -73,7 +73,7 @@ const ManageOwnerHalls = () => {
     console.log("Saving hall:", hall.about);
     try {
       await ApiService.request({
-        url: `http://localhost:3000/owner/halls/${hall.id}`,
+        url: `/api/owner/halls/${hall.id}`,
         method: "PUT",
         body: {
           name: hall.name,

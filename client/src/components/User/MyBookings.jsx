@@ -11,7 +11,7 @@ const MyBookings = () => {
     const fetchBookings = async () => {
       try {
         const res = await ApiService.request({
-          url: "http://localhost:3000/bookings/me/details",
+          url: "/api/bookings/me/details",
           method: "GET",
         });
         setBookings(res);
@@ -28,7 +28,7 @@ const MyBookings = () => {
     if (!window.confirm("האם אתה בטוח שברצונך לבטל את ההזמנה?")) return;
     try {
       await ApiService.request({
-        url: `http://localhost:3000/bookings/${bookingId}/cancel`,
+        url: `/api/bookings/${bookingId}/cancel`,
         method: "PATCH",
       });
       setBookings((prev) =>

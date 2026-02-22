@@ -29,7 +29,7 @@ const Pay = () => {
 
         const res = await ApiService.request({
           method: "POST",
-          url: "http://localhost:3000/bookings/new",
+          url: "/api/bookings/new",
           body: bookingData,
         });
 
@@ -56,7 +56,7 @@ const Pay = () => {
     try {
       await ApiService.request({
         method: 'POST',
-        url: `http://localhost:3000/payment/capture-order`,
+        url: `/api/payment/capture-order`,
         body: { orderID: captureId, bookingId: bookingId }
       });
       alert("התשלום וההזמנה הושלמו בהצלחה!");

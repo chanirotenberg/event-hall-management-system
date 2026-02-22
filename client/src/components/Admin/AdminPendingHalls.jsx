@@ -13,7 +13,7 @@ const AdminPendingHalls = () => {
     const fetchPendingHalls = async () => {
         try {
             const data = await ApiService.request({
-                url: "http://localhost:3000/admin/halls/pending",
+                url: "/api/admin/halls/pending",
             });
             setPendingHalls(data);
         } catch (err) {
@@ -28,7 +28,7 @@ const AdminPendingHalls = () => {
     const approveHall = async (hall) => {
         try {
             await ApiService.request({
-                url: `http://localhost:3000/admin/halls/${hall.id}/approve`,
+                url: `/api/admin/halls/${hall.id}/approve`,
                 method: "PATCH",
                 body: {
                     ...hall,

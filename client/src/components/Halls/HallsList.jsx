@@ -19,11 +19,11 @@ const HallsList = () => {
       setError(""); // איפוס שגיאה
       try {
         const url = category
-          ? `http://localhost:3000/halls?category=${encodeURIComponent(category)}`
-          : "http://localhost:3000/halls";
+          ? `/api/halls?category=${encodeURIComponent(category)}`
+          : "/api/halls";
 
         const hallsData = await ApiService.request({ url });
-        const allReviews = await ApiService.request({ url: "http://localhost:3000/reviews" });
+        const allReviews = await ApiService.request({ url: "/api/reviews" });
 
         const hallsWithRatings = hallsData.map(hall => {
           const hallReviews = allReviews.filter(r => r.hall_id === hall.id);

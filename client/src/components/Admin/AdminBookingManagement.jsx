@@ -14,7 +14,7 @@ const AdminBookingManagement = () => {
   const fetchBookings = async () => {
     try {
       const res = await ApiService.request({
-        url: "http://localhost:3000/admin/bookings",
+        url: "/api/admin/bookings",
         method: "GET",
       });
       setBookings(res);
@@ -30,7 +30,7 @@ const AdminBookingManagement = () => {
   const updateStatus = async (id, newStatus) => {
     try {
       await ApiService.request({
-        url: `http://localhost:3000/admin/bookings/${id}`,
+        url: `/api/admin/bookings/${id}`,
         method: "PATCH",
         body: { status: newStatus },
       });

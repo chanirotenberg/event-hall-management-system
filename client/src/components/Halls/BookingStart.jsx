@@ -36,7 +36,7 @@ const BookingStart = () => {
     const fetchBlockedDates = async () => {
       try {
         const res = await ApiService.request({
-          url: `http://localhost:3000/bookings/unavailable/${hallId}`,
+          url: `/api/bookings/unavailable/${hallId}`,
         });
         setBlockedDates(res.map(d => new Date(d)));
       } catch (err) {
@@ -46,7 +46,7 @@ const BookingStart = () => {
 
     const fetchHall = async () => {
       try {
-        const hall = await ApiService.request({ url: `http://localhost:3000/halls/${hallId}` });
+        const hall = await ApiService.request({ url: `/api/halls/${hallId}` });
         setHallPrice(hall.price);
         const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');
         saved.hall_price = hall.price;

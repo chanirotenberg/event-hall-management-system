@@ -11,7 +11,7 @@ const UserProfile = () => {
     const fetchData = async () => {
       try {
         const res = await ApiService.request({
-          url: "http://localhost:3000/users/me",
+          url: "/api/users/me",
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -41,7 +41,7 @@ const UserProfile = () => {
 
     try {
       const res = await ApiService.request({
-        url: "http://localhost:3000/users/me",
+        url: "/api/users/me",
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

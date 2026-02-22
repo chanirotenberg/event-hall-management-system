@@ -13,7 +13,7 @@ const HallDetails = () => {
     const fetchHall = async () => {
       try {
         const res = await ApiService.request({
-          url: `http://localhost:3000/halls/${hallId}`,
+          url: `/api/halls/${hallId}`,
         });
         setHall(res);
       } catch (err) {
