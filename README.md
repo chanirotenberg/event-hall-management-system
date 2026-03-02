@@ -90,5 +90,4 @@ npm start
 - Performance and security improvements
 
 ## 📫 Contact
-- Email: your@email.com
-- LinkedIn: https://linkedin.com/in/your-profile
+- Email: c0583212923@gmail.com
